@@ -4,6 +4,3 @@ author: Dhananjay Sharma
 branding:
   icon: 'paperclip'
   color: 'white'
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
