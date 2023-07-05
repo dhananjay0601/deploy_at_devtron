@@ -1,0 +1,9 @@
+action: take-action
+description: This action is to assign yourself an issue to a repo to which you are not contributing to.
+author: Dhananjay Sharma
+branding:
+  icon: 'paperclip'
+  color: 'white'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
