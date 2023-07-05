@@ -40,7 +40,8 @@ public class GetDetails extends Builder implements SimpleBuildStep {
         listener.getLogger().println("Your WebHook URL " + name + "!");
         String apiToken = env.get("api-token");
         listener.getLogger().println(apiToken);
-
+        String imageName = env.get("IMAGE_NAME");
+        listener.getLogger().println(imageName);
         Deploy.sendPayload("dhananjay0106/jenkins_ci_pipeline:v13", name, listener, apiToken);
     }
 
