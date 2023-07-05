@@ -2,12 +2,11 @@
 
 ## Introduction
 
-TODO Describe what your plugin does here
+This plugin helps you to deploy your Image at Devtron platform.
 
 ## Getting started
 
-TODO Tell users how to configure your plugin here, include screenshots, pipeline examples and 
-configuration-as-code examples.
+Using the GUI: From your Jenkins dashboard navigate to Manage Jenkins > Manage Plugins and select the Available tab. Locate this plugin by searching for Deploy plugin.
 
 ## Issues
 
