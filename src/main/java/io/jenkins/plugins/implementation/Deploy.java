@@ -1,4 +1,4 @@
-package io.jenkins.plugins.sample;
+package io.jenkins.plugins.implementation;
 
 import hudson.Extension;
 import hudson.model.AbstractBuild;
@@ -12,44 +12,13 @@ import jenkins.tasks.SimpleBuildStep;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import io.jenkins.plugins.implementation.Deploy;
 
 public class Deploy extends Builder implements SimpleBuildStep {
 
-    @Extension
-    public static class GitDetailsListener extends RunListener<Run<?, ?>> {
-        @Override
-        public void onCompleted(Run<?, ?> run, TaskListener listener) {
-            if (run instanceof AbstractBuild) {
-                AbstractBuild<?, ?> build = (AbstractBuild<?, ?>) run;
-                AbstractProject<?, ?> project = build.getProject();
+    public static void sendPayload(String dockerImageName, String webhookUrl, TaskListener listener, String apiToken) throws IOException {
 
-                try {
-
-                    // Get Git details from the build environment
-                    String repositoryUrl = build.getEnvironment(listener).get("GIT_URL");
-                    String branch = build.getEnvironment(listener).get("GIT_BRANCH");
-                    String commitHash = build.getEnvironment(listener).get("GIT_COMMIT");
-
-                    // Print Git details on the console output
-                    listener.getLogger().println("------------------");
-                    listener.getLogger().println("Git Repository URL: " + repositoryUrl);
-                    listener.getLogger().println("------------------");
-                    listener.getLogger().println("Branch: " + branch);
-                    listener.getLogger().println("------------------");
-                    listener.getLogger().println("Commit Hash: " + commitHash);
-                    listener.getLogger().println("------------------");
-                    listener.getLogger().println("start-point-for-deployment");
-
-                } catch (IOException | InterruptedException e) {
-                    listener.getLogger().println("Failed to fetch Git details: " + e.getMessage());
-                }
-            }
-        }
-    }
-
-    public static void sendPayload(String webhookUrl, TaskListener listener, String apiToken) throws IOException {
-
-        String requestBody = "{\"dockerImage\":\"dhananjay0106/jenkins_ci_pipeline:v15\",\"digest\":\"test1\",\"dataSource\":\"ext\",\"materialType\":\"git\"}";
+        String requestBody = "{\"dockerImage\":\"" + dockerImageName + "\"\",\"digest\":\" test1 \",\"dataSource\":\" ext \",\"materialType\":\" git \"}";
         performCurlRequest(webhookUrl, apiToken, requestBody, listener);
 
     }

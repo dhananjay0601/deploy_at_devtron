@@ -12,7 +12,7 @@ This plugin helps you to deploy your Image at Devtron platform.
 ![Screenshot 2023-07-05 at 2.19.27 PM.png](..%2FDesktop%2FScreenshot%202023-07-05%20at%202.19.27%20PM.png)
 4) Configure the plugin by Dashboard > Your Project > Configuration > Add build > Deploy at devtron.
 ![Screenshot 2023-07-05 at 2.10.27 PM.png](..%2FDesktop%2FScreenshot%202023-07-05%20at%202.10.27%20PM.png)
-4) Mention you webhook url after selecting the build step.
+5) Mention you webhook url after selecting the build step.
 ![Screenshot 2023-07-05 at 2.12.10 PM.png](..%2FDesktop%2FScreenshot%202023-07-05%20at%202.12.10%20PM.png)
 
 ## Issues

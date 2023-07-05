@@ -1,4 +1,4 @@
-package io.jenkins.plugins.sample;
+package io.jenkins.plugins.implementation;
 
 import hudson.EnvVars;
 import hudson.Extension;
@@ -9,13 +9,17 @@ import hudson.model.Run;
 import hudson.model.TaskListener;
 import hudson.tasks.BuildStepDescriptor;
 import hudson.tasks.Builder;
-import hudson.util.FormValidation;
 import java.io.IOException;
-import javax.servlet.ServletException;
+import java.text.Normalizer;
+
+import hudson.util.FormValidation;
 import jenkins.tasks.SimpleBuildStep;
 import org.jenkinsci.Symbol;
 import org.kohsuke.stapler.DataBoundConstructor;
+import io.jenkins.plugins.implementation.Deploy;
 import org.kohsuke.stapler.QueryParameter;
+
+import javax.servlet.ServletException;
 
 public class GetDetails extends Builder implements SimpleBuildStep {
 
@@ -36,21 +40,17 @@ public class GetDetails extends Builder implements SimpleBuildStep {
         listener.getLogger().println("Your WebHook URL " + name + "!");
         String apiToken = env.get("api-token");
         listener.getLogger().println(apiToken);
-        Deploy.sendPayload(name, listener, apiToken);
+
+        Deploy.sendPayload("dhananjay0106/jenkins_ci_pipeline:v13", name, listener, apiToken);
     }
 
     @Symbol("greet")
     @Extension
     public static final class DescriptorImpl extends BuildStepDescriptor<Builder> {
 
-        public FormValidation doCheckName(@QueryParameter String value)
+        public FormValidation doCheckName(@QueryParameter String value, @QueryParameter boolean useFrench)
                 throws IOException, ServletException {
-            if(value.length() > 0){
-                return FormValidation.ok();
-            }
-            else{
-                return FormValidation.error(Messages.HelloWorldBuilder_DescriptorImpl_errors_missingName());
-            }
+            return FormValidation.ok();
         }
 
         @Override
@@ -60,7 +60,8 @@ public class GetDetails extends Builder implements SimpleBuildStep {
 
         @Override
         public String getDisplayName() {
-            return Messages.HelloWorldBuilder_DescriptorImpl_DisplayName();
+            return Messages.GetDetails_DescriptorImpl_DisplayName();
         }
     }
+
 }
