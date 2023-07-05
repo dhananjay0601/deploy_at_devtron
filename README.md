@@ -6,10 +6,15 @@ This plugin helps you to deploy your Image at Devtron platform.
 
 ## Getting started
 
-Using the GUI: From your Jenkins dashboard navigate to Manage Jenkins > Manage Plugins and select the Available tab. Locate this plugin by searching for Deploy plugin.
-Configure the plugin by Dashboard > Your Project > Configuration > Add build > Deploy at devtron. 
+1) Using the GUI: From your Jenkins dashboard navigate to Manage Jenkins > Manage Plugins and select the Available tab. Locate this plugin by searching for Deploy plugin.
+2) Before build chose mention it as the parameterized build to write you api-token in description field.
+3) Go to Dashboard > Your Project > Configuration > General.
+![Screenshot 2023-07-05 at 2.19.27 PM.png](..%2FDesktop%2FScreenshot%202023-07-05%20at%202.19.27%20PM.png)
+4) Configure the plugin by Dashboard > Your Project > Configuration > Add build > Deploy at devtron.
 ![Screenshot 2023-07-05 at 2.10.27 PM.png](..%2FDesktop%2FScreenshot%202023-07-05%20at%202.10.27%20PM.png)
+4) Mention you webhook url after selecting the build step.
 ![Screenshot 2023-07-05 at 2.12.10 PM.png](..%2FDesktop%2FScreenshot%202023-07-05%20at%202.12.10%20PM.png)
+
 ## Issues
 
 Report issues and enhancements in the [Jenkins issue tracker](https://issues.jenkins.io/).
