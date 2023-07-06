@@ -4,3 +4,6 @@ author: Dhananjay Sharma
 branding:
   icon: 'paperclip'
   color: 'white'
+runs:
+    - run: mvn -DskipTests Verfiy
+    - run: mvn test
