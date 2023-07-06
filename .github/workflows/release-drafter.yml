@@ -8,10 +8,27 @@ on:
       - main
 
 jobs:
-  update_release_draft:
+  build:
     runs-on: ubuntu-latest
     steps:
-      # Drafts your next Release notes as Pull Requests are merged into the default branch
-      - uses: release-drafter/release-drafter@v5
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          java-version: 11
+      - run: mvn -DskipTests Verfiy
+      - run: npm test
+
+  publish-gpr:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          java-version: 11
+      - run: mvn publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
