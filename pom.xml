@@ -82,7 +82,6 @@
     </repository>
   </distributionManagement>
 
-
   <repositories>
     <repository>
       <id>repo.jenkins-ci.org</id>
