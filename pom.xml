@@ -74,6 +74,15 @@
     </dependency>
   </dependencies>
 
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>GitHub Package Registry</name>
+      <url>https://maven.pkg.github.com/dhananjay0106/deploy_at_devtron</url>
+    </repository>
+  </distributionManagement>
+
+
   <repositories>
     <repository>
       <id>repo.jenkins-ci.org</id>
