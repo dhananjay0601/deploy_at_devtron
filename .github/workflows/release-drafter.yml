@@ -18,7 +18,7 @@ jobs:
         with:
           java-version: 11
       - run: mvn -DskipTests Verfiy
-      - run: npm test
+      - run: mvn test
 
   publish-gpr:
     needs: build
